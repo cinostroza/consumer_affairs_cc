@@ -5,4 +5,4 @@ from the_eye.models import Events
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Events
-        fields = ['session_id', 'category', 'name', 'data', 'timestamp']
+        fields = ['id', 'session_id', 'category', 'name', 'data', 'timestamp']
