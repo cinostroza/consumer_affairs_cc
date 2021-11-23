@@ -21,3 +21,8 @@ class Events(models.Model):
 
     class Meta:
         ordering = ['timestamp']
+
+
+class Errors(models.Model):
+    raw_event = models.ForeignKey(RawEventsData, on_delete=models.CASCADE)
+    error_description = models.CharField(max_length=250)
