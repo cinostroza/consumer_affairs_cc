@@ -1,3 +1,3 @@
-from the_eye.models import Events
+from the_eye.models import RawEventsData, Events
 
 # TODO: Create the validator

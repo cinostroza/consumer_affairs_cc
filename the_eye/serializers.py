@@ -1,8 +1,14 @@
 from rest_framework import serializers
-from the_eye.models import Events
+from the_eye.models import RawEventsData, Events
 
 
-class EventSerializer(serializers.ModelSerializer):
+class RawEventSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RawEventsData
+        fields = ['id', 'timestamp', 'data']
+
+
+class EventsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Events
-        fields = ['id', 'session_id', 'category', 'name', 'data', 'timestamp']
+        fields = ['application', 'session_id', 'category', 'data', 'timestamp']

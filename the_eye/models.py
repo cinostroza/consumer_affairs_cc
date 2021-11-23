@@ -1,14 +1,23 @@
 from django.db import models
 
 
+# The RawEventsData model will store the data raw from the apps
+class RawEventsData(models.Model):
+    data = models.CharField(max_length=2000, blank=False)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['timestamp']
+
+
+# The Events model will store the data after it has been processed.
 class Events(models.Model):
-    session_id = models.CharField(blank=False, max_length=250)
-    category = models.CharField(blank=False, max_length=100)
-    name = models.CharField(blank=False, max_length=100)
-    data = models.CharField(blank=False, max_length=1200)
+    application = models.CharField(max_length=250, blank=False)
+    session_id = models.CharField(max_length=400, blank=False)
+    category = models.CharField(max_length=250)
+    name = models.CharField(max_length=250, blank=False)
+    data = models.CharField(max_length=2000, blank=False)
     timestamp = models.DateTimeField(blank=False)
-    is_validated = models.BooleanField(blank=False, default=False)
-    has_errors = models.BooleanField(blank=True, null=True, default=False)
 
     class Meta:
         ordering = ['timestamp']

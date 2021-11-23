@@ -1,5 +1,5 @@
-from the_eye.models import Events
-from the_eye.serializers import EventSerializer
+from the_eye.models import RawEventsData
+from the_eye.serializers import RawEventSerializer
 from rest_framework import generics
 
 
@@ -7,10 +7,10 @@ from rest_framework import generics
 # TODO: Add specific views to query based on sessions, event types, timestamps etc..
 
 class EventList(generics.ListCreateAPIView):
-    queryset = Events.objects.all()
-    serializer_class = EventSerializer
+    queryset = RawEventsData.objects.all()
+    serializer_class = RawEventSerializer
 
 
 class EventDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Events.objects.all()
-    serializer_class = EventSerializer
+    queryset = RawEventsData.objects.all()
+    serializer_class = RawEventSerializer
