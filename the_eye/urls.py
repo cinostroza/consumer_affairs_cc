@@ -1,10 +1,12 @@
-from django.urls import path
-from rest_framework.urlpatterns import format_suffix_patterns
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 from the_eye import views
 
-urlpatterns = [
-    path('rawevents/<int:pk>/', views.EventDetail.as_view()),
-    path('rawevents/', views.EventList.as_view()),
-]
+router = DefaultRouter()
+router.register(r'rawevents', views.RawEventViewSet)
+router.register(r'events', views.EventViewSet)
+router.register(r'errors', views.ErrorViewSet)
 
-urlpatterns = format_suffix_patterns(urlpatterns)
+urlpatterns = [
+    path('', include(router.urls)),
+]
